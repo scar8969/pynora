@@ -1,0 +1,121 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  animation: fadeIn var(--duration-focal) var(--ease-out);
+}
+
+.heroLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  animation: scaleIn var(--duration-focal) var(--ease-out) 200ms backwards;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform var(--duration-slow) var(--ease-out),
+              filter var(--duration-slow) var(--ease-out);
+  will-change: transform;
+}
+
+.heroLink:hover .image {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.info {
+  position: absolute;
+  bottom: calc(var(--spacing-unit) * 8);
+  left: calc(var(--spacing-unit) * 6);
+  right: calc(var(--spacing-unit) * 6);
+  z-index: 10;
+  animation: fadeInUp var(--duration-focal) var(--ease-out) 400ms backwards;
+}
+
+.title {
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: fadeInUp var(--duration-focal) var(--ease-out) 600ms backwards forwards;
+}
+
+.meta {
+  display: flex;
+  gap: calc(var(--spacing-unit) * 4);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  opacity: 0;
+  animation: fadeIn var(--duration-slow) var(--ease-out) 800ms backwards forwards;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: calc(var(--spacing-unit) * 4);
+  right: calc(var(--spacing-unit) * 6);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 2);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  opacity: 0;
+  animation: fadeIn var(--duration-slow) var(--ease-out) 1000ms backwards forwards;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: var(--color-text-secondary);
+  animation: scrollPulse 2s var(--ease-out) infinite 1200ms;
+  transform-origin: top;
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.5);
+  }
+}
+
+@media (max-width: 768px) {
+  .info {
+    bottom: calc(var(--spacing-unit) * 6);
+    left: calc(var(--spacing-unit) * 4);
+    right: calc(var(--spacing-unit) * 4);
+  }
+
+  .title {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+
+  .meta {
+    font-size: 12px;
+  }
+
+  .scrollIndicator {
+    right: calc(var(--spacing-unit) * 4);
+  }
+}
